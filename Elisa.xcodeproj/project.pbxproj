@@ -1,0 +1,567 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		61AA5EEE1D52768200B3536C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EED1D52768200B3536C /* AppDelegate.swift */; };
+		61AA5EF01D52768200B3536C /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EEF1D52768200B3536C /* EditingViewController.swift */; };
+		61AA5EF31D52768200B3536C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AA5EF11D52768200B3536C /* Main.storyboard */; };
+		61AA5EF61D52768200B3536C /* Elisa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EF41D52768200B3536C /* Elisa.xcdatamodeld */; };
+		61AA5EF81D52768200B3536C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA5EF71D52768200B3536C /* Assets.xcassets */; };
+		61AA5EFB1D52768200B3536C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AA5EF91D52768200B3536C /* LaunchScreen.storyboard */; };
+		61AA5F061D52768300B3536C /* ElisaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F051D52768300B3536C /* ElisaTests.swift */; };
+		61AA5F111D52768300B3536C /* ElisaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F101D52768300B3536C /* ElisaUITests.swift */; };
+		61AA5F221D529A4400B3536C /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F211D529A4400B3536C /* PhotoViewController.swift */; };
+		61AA5F251D52A32500B3536C /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F241D52A32500B3536C /* SharingViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		61AA5F021D52768300B3536C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61AA5EE21D52768200B3536C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61AA5EE91D52768200B3536C;
+			remoteInfo = Elisa;
+		};
+		61AA5F0D1D52768300B3536C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 61AA5EE21D52768200B3536C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 61AA5EE91D52768200B3536C;
+			remoteInfo = Elisa;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		61AA5EEA1D52768200B3536C /* Elisa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elisa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61AA5EED1D52768200B3536C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		61AA5EEF1D52768200B3536C /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
+		61AA5EF21D52768200B3536C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		61AA5EF51D52768200B3536C /* Elisa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Elisa.xcdatamodel; sourceTree = "<group>"; };
+		61AA5EF71D52768200B3536C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61AA5EFA1D52768200B3536C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		61AA5EFC1D52768200B3536C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61AA5F011D52768300B3536C /* ElisaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElisaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61AA5F051D52768300B3536C /* ElisaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElisaTests.swift; sourceTree = "<group>"; };
+		61AA5F071D52768300B3536C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61AA5F0C1D52768300B3536C /* ElisaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElisaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		61AA5F101D52768300B3536C /* ElisaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElisaUITests.swift; sourceTree = "<group>"; };
+		61AA5F121D52768300B3536C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61AA5F211D529A4400B3536C /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		61AA5F241D52A32500B3536C /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		61AA5EE71D52768200B3536C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61AA5EFE1D52768300B3536C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61AA5F091D52768300B3536C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		61AA5EE11D52768200B3536C = {
+			isa = PBXGroup;
+			children = (
+				61AA5EEC1D52768200B3536C /* Elisa */,
+				61AA5F041D52768300B3536C /* ElisaTests */,
+				61AA5F0F1D52768300B3536C /* ElisaUITests */,
+				61AA5EEB1D52768200B3536C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		61AA5EEB1D52768200B3536C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				61AA5EEA1D52768200B3536C /* Elisa.app */,
+				61AA5F011D52768300B3536C /* ElisaTests.xctest */,
+				61AA5F0C1D52768300B3536C /* ElisaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		61AA5EEC1D52768200B3536C /* Elisa */ = {
+			isa = PBXGroup;
+			children = (
+				61AA5EF11D52768200B3536C /* Main.storyboard */,
+				61AA5F231D529A5100B3536C /* View Controllers */,
+				61AA5F201D5276AA00B3536C /* Views */,
+				61AA5F1F1D52769F00B3536C /* Supporting Files */,
+				61AA5F1E1D52769300B3536C /* Model */,
+			);
+			path = Elisa;
+			sourceTree = "<group>";
+		};
+		61AA5F041D52768300B3536C /* ElisaTests */ = {
+			isa = PBXGroup;
+			children = (
+				61AA5F051D52768300B3536C /* ElisaTests.swift */,
+				61AA5F071D52768300B3536C /* Info.plist */,
+			);
+			path = ElisaTests;
+			sourceTree = "<group>";
+		};
+		61AA5F0F1D52768300B3536C /* ElisaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				61AA5F101D52768300B3536C /* ElisaUITests.swift */,
+				61AA5F121D52768300B3536C /* Info.plist */,
+			);
+			path = ElisaUITests;
+			sourceTree = "<group>";
+		};
+		61AA5F1E1D52769300B3536C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		61AA5F1F1D52769F00B3536C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				61AA5EED1D52768200B3536C /* AppDelegate.swift */,
+				61AA5EF71D52768200B3536C /* Assets.xcassets */,
+				61AA5EFC1D52768200B3536C /* Info.plist */,
+				61AA5EF41D52768200B3536C /* Elisa.xcdatamodeld */,
+				61AA5EF91D52768200B3536C /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		61AA5F201D5276AA00B3536C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		61AA5F231D529A5100B3536C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				61AA5EEF1D52768200B3536C /* EditingViewController.swift */,
+				61AA5F211D529A4400B3536C /* PhotoViewController.swift */,
+				61AA5F241D52A32500B3536C /* SharingViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		61AA5EE91D52768200B3536C /* Elisa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61AA5F151D52768300B3536C /* Build configuration list for PBXNativeTarget "Elisa" */;
+			buildPhases = (
+				61AA5EE61D52768200B3536C /* Sources */,
+				61AA5EE71D52768200B3536C /* Frameworks */,
+				61AA5EE81D52768200B3536C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Elisa;
+			productName = Elisa;
+			productReference = 61AA5EEA1D52768200B3536C /* Elisa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61AA5F001D52768300B3536C /* ElisaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61AA5F181D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaTests" */;
+			buildPhases = (
+				61AA5EFD1D52768300B3536C /* Sources */,
+				61AA5EFE1D52768300B3536C /* Frameworks */,
+				61AA5EFF1D52768300B3536C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61AA5F031D52768300B3536C /* PBXTargetDependency */,
+			);
+			name = ElisaTests;
+			productName = ElisaTests;
+			productReference = 61AA5F011D52768300B3536C /* ElisaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		61AA5F0B1D52768300B3536C /* ElisaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61AA5F1B1D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaUITests" */;
+			buildPhases = (
+				61AA5F081D52768300B3536C /* Sources */,
+				61AA5F091D52768300B3536C /* Frameworks */,
+				61AA5F0A1D52768300B3536C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				61AA5F0E1D52768300B3536C /* PBXTargetDependency */,
+			);
+			name = ElisaUITests;
+			productName = ElisaUITests;
+			productReference = 61AA5F0C1D52768300B3536C /* ElisaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		61AA5EE21D52768200B3536C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Yang Song";
+				TargetAttributes = {
+					61AA5EE91D52768200B3536C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2ZU5YGK6K4;
+					};
+					61AA5F001D52768300B3536C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2ZU5YGK6K4;
+						TestTargetID = 61AA5EE91D52768200B3536C;
+					};
+					61AA5F0B1D52768300B3536C = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2ZU5YGK6K4;
+						TestTargetID = 61AA5EE91D52768200B3536C;
+					};
+				};
+			};
+			buildConfigurationList = 61AA5EE51D52768200B3536C /* Build configuration list for PBXProject "Elisa" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 61AA5EE11D52768200B3536C;
+			productRefGroup = 61AA5EEB1D52768200B3536C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				61AA5EE91D52768200B3536C /* Elisa */,
+				61AA5F001D52768300B3536C /* ElisaTests */,
+				61AA5F0B1D52768300B3536C /* ElisaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		61AA5EE81D52768200B3536C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61AA5EFB1D52768200B3536C /* LaunchScreen.storyboard in Resources */,
+				61AA5EF81D52768200B3536C /* Assets.xcassets in Resources */,
+				61AA5EF31D52768200B3536C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61AA5EFF1D52768300B3536C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61AA5F0A1D52768300B3536C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		61AA5EE61D52768200B3536C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61AA5F221D529A4400B3536C /* PhotoViewController.swift in Sources */,
+				61AA5EF01D52768200B3536C /* EditingViewController.swift in Sources */,
+				61AA5EEE1D52768200B3536C /* AppDelegate.swift in Sources */,
+				61AA5EF61D52768200B3536C /* Elisa.xcdatamodeld in Sources */,
+				61AA5F251D52A32500B3536C /* SharingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61AA5EFD1D52768300B3536C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61AA5F061D52768300B3536C /* ElisaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61AA5F081D52768300B3536C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61AA5F111D52768300B3536C /* ElisaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		61AA5F031D52768300B3536C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61AA5EE91D52768200B3536C /* Elisa */;
+			targetProxy = 61AA5F021D52768300B3536C /* PBXContainerItemProxy */;
+		};
+		61AA5F0E1D52768300B3536C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 61AA5EE91D52768200B3536C /* Elisa */;
+			targetProxy = 61AA5F0D1D52768300B3536C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		61AA5EF11D52768200B3536C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61AA5EF21D52768200B3536C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		61AA5EF91D52768200B3536C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				61AA5EFA1D52768200B3536C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		61AA5F131D52768300B3536C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		61AA5F141D52768300B3536C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		61AA5F161D52768300B3536C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Elisa/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.163.Elisa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		61AA5F171D52768300B3536C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Elisa/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.163.Elisa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		61AA5F191D52768300B3536C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ElisaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.163.ElisaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Elisa.app/Elisa";
+			};
+			name = Debug;
+		};
+		61AA5F1A1D52768300B3536C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ElisaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.163.ElisaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Elisa.app/Elisa";
+			};
+			name = Release;
+		};
+		61AA5F1C1D52768300B3536C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ElisaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.163.ElisaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Elisa;
+			};
+			name = Debug;
+		};
+		61AA5F1D1D52768300B3536C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ElisaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.163.ElisaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Elisa;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		61AA5EE51D52768200B3536C /* Build configuration list for PBXProject "Elisa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61AA5F131D52768300B3536C /* Debug */,
+				61AA5F141D52768300B3536C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61AA5F151D52768300B3536C /* Build configuration list for PBXNativeTarget "Elisa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61AA5F161D52768300B3536C /* Debug */,
+				61AA5F171D52768300B3536C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		61AA5F181D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61AA5F191D52768300B3536C /* Debug */,
+				61AA5F1A1D52768300B3536C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		61AA5F1B1D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61AA5F1C1D52768300B3536C /* Debug */,
+				61AA5F1D1D52768300B3536C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		61AA5EF41D52768200B3536C /* Elisa.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				61AA5EF51D52768200B3536C /* Elisa.xcdatamodel */,
+			);
+			currentVersion = 61AA5EF51D52768200B3536C /* Elisa.xcdatamodel */;
+			path = Elisa.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 61AA5EE21D52768200B3536C /* Project object */;
+}
