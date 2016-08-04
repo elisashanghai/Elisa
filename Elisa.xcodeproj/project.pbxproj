@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		614D59531D530BEA004F26DF /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59521D530BEA004F26DF /* Filter.swift */; };
+		614D59561D53176B004F26DF /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59551D53176B004F26DF /* Filters.swift */; };
 		61AA5EEE1D52768200B3536C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EED1D52768200B3536C /* AppDelegate.swift */; };
 		61AA5EF01D52768200B3536C /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EEF1D52768200B3536C /* EditingViewController.swift */; };
 		61AA5EF31D52768200B3536C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AA5EF11D52768200B3536C /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		614D59521D530BEA004F26DF /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		614D59551D53176B004F26DF /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		61AA5EEA1D52768200B3536C /* Elisa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elisa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AA5EED1D52768200B3536C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AA5EEF1D52768200B3536C /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 		61AA5F1E1D52769300B3536C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				614D59521D530BEA004F26DF /* Filter.swift */,
+				614D59551D53176B004F26DF /* Filters.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -300,8 +306,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614D59561D53176B004F26DF /* Filters.swift in Sources */,
 				61AA5F221D529A4400B3536C /* PhotoViewController.swift in Sources */,
 				61AA5EF01D52768200B3536C /* EditingViewController.swift in Sources */,
+				614D59531D530BEA004F26DF /* Filter.swift in Sources */,
 				61AA5EEE1D52768200B3536C /* AppDelegate.swift in Sources */,
 				61AA5EF61D52768200B3536C /* Elisa.xcdatamodeld in Sources */,
 				61AA5F251D52A32500B3536C /* SharingViewController.swift in Sources */,
@@ -531,6 +539,7 @@
 				61AA5F171D52768300B3536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61AA5F181D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaTests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +548,7 @@
 				61AA5F1A1D52768300B3536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61AA5F1B1D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaUITests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +557,7 @@
 				61AA5F1D1D52768300B3536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -17,16 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="olZ-OE-7iO">
-                                <rect key="frame" x="0.0" y="64" width="600" height="386"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="UKN-Pu-2fJ" appends="YES" id="4El-0o-bKP"/>
-                                    <outletCollection property="gestureRecognizers" destination="g8g-qx-73U" appends="YES" id="yPy-Lu-Aa7"/>
-                                    <outletCollection property="gestureRecognizers" destination="3Vj-vd-NM7" appends="YES" id="OsI-Hm-CdU"/>
-                                </connections>
-                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PbM-vV-up7">
                                 <rect key="frame" x="0.0" y="450" width="600" height="150"/>
                                 <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -51,6 +41,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="initial image" translatesAutoresizingMaskIntoConstraints="NO" id="olZ-OE-7iO">
+                                <rect key="frame" x="0.0" y="64" width="600" height="386"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.93725490196078431" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="g8g-qx-73U" appends="YES" id="yPy-Lu-Aa7"/>
+                                    <outletCollection property="gestureRecognizers" destination="3Vj-vd-NM7" appends="YES" id="OsI-Hm-CdU"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -72,11 +71,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="UKN-Pu-2fJ">
-                    <connections>
-                        <segue destination="c4o-jl-MCC" kind="presentation" modalTransitionStyle="crossDissolve" id="893-Gc-Qpu"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="up" id="g8g-qx-73U">
                     <connections>
                         <segue destination="k9Z-wr-a46" kind="presentation" id="8NA-hc-knn"/>
@@ -210,5 +204,6 @@
     </scenes>
     <resources>
         <image name="golden gate" width="1500" height="500"/>
+        <image name="initial image" width="1499" height="707"/>
     </resources>
 </document>
