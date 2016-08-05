@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		61032FAF1D53D96500B8CBF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61032FAE1D53D96500B8CBF1 /* Assets.xcassets */; };
+		61032FB11D53DE2D00B8CBF1 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61032FB01D53DE2D00B8CBF1 /* UploadPhotoViewController.swift */; };
+		614D59531D530BEA004F26DF /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59521D530BEA004F26DF /* Filter.swift */; };
+		614D59561D53176B004F26DF /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59551D53176B004F26DF /* Filters.swift */; };
+		614D59581D5341B3004F26DF /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59571D5341B3004F26DF /* CustomImageFlowLayout.swift */; };
+		614D595A1D53438B004F26DF /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59591D53438B004F26DF /* FilterCollectionViewCell.swift */; };
 		61AA5EEE1D52768200B3536C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EED1D52768200B3536C /* AppDelegate.swift */; };
 		61AA5EF01D52768200B3536C /* EditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EEF1D52768200B3536C /* EditingViewController.swift */; };
 		61AA5EF31D52768200B3536C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AA5EF11D52768200B3536C /* Main.storyboard */; };
 		61AA5EF61D52768200B3536C /* Elisa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5EF41D52768200B3536C /* Elisa.xcdatamodeld */; };
-		61AA5EF81D52768200B3536C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61AA5EF71D52768200B3536C /* Assets.xcassets */; };
 		61AA5EFB1D52768200B3536C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61AA5EF91D52768200B3536C /* LaunchScreen.storyboard */; };
 		61AA5F061D52768300B3536C /* ElisaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F051D52768300B3536C /* ElisaTests.swift */; };
 		61AA5F111D52768300B3536C /* ElisaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F101D52768300B3536C /* ElisaUITests.swift */; };
@@ -37,12 +42,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		61032FAE1D53D96500B8CBF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		61032FB01D53DE2D00B8CBF1 /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
+		614D59521D530BEA004F26DF /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		614D59551D53176B004F26DF /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		614D59571D5341B3004F26DF /* CustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageFlowLayout.swift; sourceTree = "<group>"; };
+		614D59591D53438B004F26DF /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		61AA5EEA1D52768200B3536C /* Elisa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Elisa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61AA5EED1D52768200B3536C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		61AA5EEF1D52768200B3536C /* EditingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingViewController.swift; sourceTree = "<group>"; };
 		61AA5EF21D52768200B3536C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		61AA5EF51D52768200B3536C /* Elisa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Elisa.xcdatamodel; sourceTree = "<group>"; };
-		61AA5EF71D52768200B3536C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		61AA5EFA1D52768200B3536C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		61AA5EFC1D52768200B3536C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61AA5F011D52768300B3536C /* ElisaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ElisaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +143,8 @@
 		61AA5F1E1D52769300B3536C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				614D59521D530BEA004F26DF /* Filter.swift */,
+				614D59551D53176B004F26DF /* Filters.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -140,8 +152,8 @@
 		61AA5F1F1D52769F00B3536C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				61032FAE1D53D96500B8CBF1 /* Assets.xcassets */,
 				61AA5EED1D52768200B3536C /* AppDelegate.swift */,
-				61AA5EF71D52768200B3536C /* Assets.xcassets */,
 				61AA5EFC1D52768200B3536C /* Info.plist */,
 				61AA5EF41D52768200B3536C /* Elisa.xcdatamodeld */,
 				61AA5EF91D52768200B3536C /* LaunchScreen.storyboard */,
@@ -152,6 +164,8 @@
 		61AA5F201D5276AA00B3536C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				614D59571D5341B3004F26DF /* CustomImageFlowLayout.swift */,
+				614D59591D53438B004F26DF /* FilterCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -159,6 +173,7 @@
 		61AA5F231D529A5100B3536C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				61032FB01D53DE2D00B8CBF1 /* UploadPhotoViewController.swift */,
 				61AA5EEF1D52768200B3536C /* EditingViewController.swift */,
 				61AA5F211D529A4400B3536C /* PhotoViewController.swift */,
 				61AA5F241D52A32500B3536C /* SharingViewController.swift */,
@@ -274,7 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				61AA5EFB1D52768200B3536C /* LaunchScreen.storyboard in Resources */,
-				61AA5EF81D52768200B3536C /* Assets.xcassets in Resources */,
+				61032FAF1D53D96500B8CBF1 /* Assets.xcassets in Resources */,
 				61AA5EF31D52768200B3536C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,8 +315,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				614D59561D53176B004F26DF /* Filters.swift in Sources */,
+				614D595A1D53438B004F26DF /* FilterCollectionViewCell.swift in Sources */,
 				61AA5F221D529A4400B3536C /* PhotoViewController.swift in Sources */,
+				614D59581D5341B3004F26DF /* CustomImageFlowLayout.swift in Sources */,
+				61032FB11D53DE2D00B8CBF1 /* UploadPhotoViewController.swift in Sources */,
 				61AA5EF01D52768200B3536C /* EditingViewController.swift in Sources */,
+				614D59531D530BEA004F26DF /* Filter.swift in Sources */,
 				61AA5EEE1D52768200B3536C /* AppDelegate.swift in Sources */,
 				61AA5EF61D52768200B3536C /* Elisa.xcdatamodeld in Sources */,
 				61AA5F251D52A32500B3536C /* SharingViewController.swift in Sources */,
@@ -531,6 +551,7 @@
 				61AA5F171D52768300B3536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61AA5F181D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaTests" */ = {
 			isa = XCConfigurationList;
@@ -539,6 +560,7 @@
 				61AA5F1A1D52768300B3536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		61AA5F1B1D52768300B3536C /* Build configuration list for PBXNativeTarget "ElisaUITests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +569,7 @@
 				61AA5F1D1D52768300B3536C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

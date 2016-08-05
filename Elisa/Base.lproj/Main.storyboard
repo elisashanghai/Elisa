@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qjt-xU-B8P">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="OEb-aU-7mw">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Editing View Controller-->
@@ -17,40 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="olZ-OE-7iO">
-                                <rect key="frame" x="0.0" y="64" width="600" height="386"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="UKN-Pu-2fJ" appends="YES" id="4El-0o-bKP"/>
-                                    <outletCollection property="gestureRecognizers" destination="g8g-qx-73U" appends="YES" id="yPy-Lu-Aa7"/>
-                                    <outletCollection property="gestureRecognizers" destination="3Vj-vd-NM7" appends="YES" id="OsI-Hm-CdU"/>
-                                </connections>
-                            </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PbM-vV-up7">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PbM-vV-up7">
                                 <rect key="frame" x="0.0" y="450" width="600" height="150"/>
                                 <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="OmN-an-uDk"/>
                                 </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MBd-rR-b8I">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="mEG-vW-5y1"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NRR-mM-BRT">
-                                        <rect key="frame" x="0.0" y="64" width="50" height="50"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="NRR-mM-BRT" customClass="FilterCollectionViewCell" customModule="Elisa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KB2-9j-VNl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="KB2-9j-VNl" firstAttribute="top" secondItem="NRR-mM-BRT" secondAttribute="top" id="Glr-rE-SdZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="KB2-9j-VNl" secondAttribute="trailing" id="Ovq-bw-4tf"/>
+                                            <constraint firstItem="KB2-9j-VNl" firstAttribute="leading" secondItem="NRR-mM-BRT" secondAttribute="leading" id="c1c-bq-MwY"/>
+                                            <constraint firstAttribute="bottom" secondItem="KB2-9j-VNl" secondAttribute="bottom" id="uly-zi-5gI"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="filterImageView" destination="KB2-9j-VNl" id="FLn-H4-iVm"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="nS5-cb-DaP"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Wir-du-8fn"/>
+                                </connections>
                             </collectionView>
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="olZ-OE-7iO">
+                                <rect key="frame" x="0.0" y="64" width="600" height="386"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.93725490196078431" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="g8g-qx-73U" appends="YES" id="yPy-Lu-Aa7"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -72,19 +84,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="UKN-Pu-2fJ">
-                    <connections>
-                        <segue destination="c4o-jl-MCC" kind="presentation" modalTransitionStyle="crossDissolve" id="893-Gc-Qpu"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <swipeGestureRecognizer direction="up" id="g8g-qx-73U">
                     <connections>
-                        <segue destination="k9Z-wr-a46" kind="presentation" id="8NA-hc-knn"/>
+                        <segue destination="k9Z-wr-a46" kind="presentation" identifier="editingToSharingSegue" id="8NA-hc-knn"/>
                     </connections>
                 </swipeGestureRecognizer>
-                <swipeGestureRecognizer direction="down" id="3Vj-vd-NM7"/>
             </objects>
-            <point key="canvasLocation" x="963" y="698"/>
+            <point key="canvasLocation" x="1775" y="698"/>
         </scene>
         <!--Photo View Controller-->
         <scene sceneID="3De-Au-mjz">
@@ -98,12 +104,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="golden gate" translatesAutoresizingMaskIntoConstraints="NO" id="S4c-zk-KOU">
+                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S4c-zk-KOU">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="K0o-66-BOK" appends="YES" id="bZP-du-iuM"/>
+                                    <outletCollection property="gestureRecognizers" destination="nM6-gV-fk0" appends="YES" id="zcX-KK-NaO"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -122,13 +128,13 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uRp-zr-h1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="K0o-66-BOK">
+                <tapGestureRecognizer id="nM6-gV-fk0">
                     <connections>
-                        <action selector="dismissSegueInPhotoView:" destination="c4o-jl-MCC" id="6hN-5o-cVK"/>
+                        <action selector="dismissSegueInPhotoView:" destination="c4o-jl-MCC" id="eiX-LZ-Tcp"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="945" y="1447"/>
+            <point key="canvasLocation" x="2534" y="1406"/>
         </scene>
         <!--Sharing View Controller-->
         <scene sceneID="Lgd-1m-Pgu">
@@ -142,42 +148,85 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yab-KU-zoz">
-                                <rect key="frame" x="554" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yab-KU-zoz" userLabel="Twitter">
+                                <rect key="frame" x="452" y="324" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="ada-q5-hBw"/>
+                                    <constraint firstAttribute="width" constant="128" id="rHs-p0-vbA"/>
+                                </constraints>
+                                <state key="normal" image="twitter"/>
+                                <connections>
+                                    <action selector="buttonTwitterTapped:" destination="k9Z-wr-a46" eventType="touchUpInside" id="o9m-Eb-NJf"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8k-9u-pZy">
-                                <rect key="frame" x="0.0" y="570" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8k-9u-pZy" userLabel="Camera Roll">
+                                <rect key="frame" x="20" y="462" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="Iff-Si-iwZ"/>
+                                    <constraint firstAttribute="height" constant="128" id="htz-LY-Fhe"/>
+                                </constraints>
+                                <state key="normal" image="ios_photos"/>
+                                <connections>
+                                    <action selector="buttonCameraRollTapped:" destination="k9Z-wr-a46" eventType="touchUpInside" id="Fqk-Fm-w4Y"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ5-UK-x18">
-                                <rect key="frame" x="554" y="570" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-8Z-8LC">
+                                <rect key="frame" x="0.0" y="30" width="600" height="274"/>
+                                <color key="backgroundColor" red="1" green="0.43529412150000002" blue="0.81176471709999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fcc-5Q-rjL" appends="YES" id="di4-as-W0d"/>
+                                    <outletCollection property="gestureRecognizers" destination="fcc-5Q-rjL" appends="YES" id="FQu-qg-n2j"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPG-GI-lga" userLabel="Facebook">
+                                <rect key="frame" x="20" y="324" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="NVx-Ha-HxY"/>
+                                    <constraint firstAttribute="width" constant="128" id="lgb-Tk-CxS"/>
+                                </constraints>
+                                <state key="normal" image="facebook"/>
+                                <connections>
+                                    <action selector="buttonFacebookTapped:" destination="k9Z-wr-a46" eventType="touchUpInside" id="3b3-Zw-aGR"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPG-GI-lga">
-                                <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aJ5-UK-x18" userLabel="Weibo">
+                                <rect key="frame" x="452" y="462" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="CJA-Q3-eys"/>
+                                    <constraint firstAttribute="width" constant="128" id="RbL-ol-csm"/>
+                                </constraints>
+                                <state key="normal" image="weibo"/>
+                                <connections>
+                                    <action selector="ButtonWeixinTapped:" destination="k9Z-wr-a46" eventType="touchUpInside" id="Uma-iP-kIy"/>
+                                    <action selector="buttonWeiboTapped:" destination="k9Z-wr-a46" eventType="touchUpInside" id="aJj-vu-UTv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="Yab-KU-zoz" firstAttribute="width" secondItem="SPG-GI-lga" secondAttribute="width" id="7cf-HX-a2X"/>
-                            <constraint firstItem="S8k-9u-pZy" firstAttribute="leading" secondItem="Zyx-pc-ppC" secondAttribute="leading" id="9Hv-Hu-rsE"/>
-                            <constraint firstItem="S8k-9u-pZy" firstAttribute="bottom" secondItem="n8p-pS-b7B" secondAttribute="top" id="AGG-bb-oea"/>
-                            <constraint firstItem="aJ5-UK-x18" firstAttribute="baseline" secondItem="S8k-9u-pZy" secondAttribute="baseline" id="BKo-b3-7sI"/>
-                            <constraint firstItem="aJ5-UK-x18" firstAttribute="leading" secondItem="Yab-KU-zoz" secondAttribute="leading" id="Hce-lD-RpW"/>
-                            <constraint firstItem="SPG-GI-lga" firstAttribute="top" secondItem="Zyx-pc-ppC" secondAttribute="top" id="Ihx-8X-C3U"/>
-                            <constraint firstItem="Yab-KU-zoz" firstAttribute="top" secondItem="Zyx-pc-ppC" secondAttribute="top" id="J6K-6W-PEq"/>
-                            <constraint firstItem="S8k-9u-pZy" firstAttribute="height" secondItem="SPG-GI-lga" secondAttribute="height" id="gql-AG-WZL"/>
-                            <constraint firstItem="SPG-GI-lga" firstAttribute="leading" secondItem="Zyx-pc-ppC" secondAttribute="leading" id="miL-La-JiU"/>
-                            <constraint firstAttribute="trailing" secondItem="Yab-KU-zoz" secondAttribute="trailing" id="wi8-Jx-bLA"/>
+                            <constraint firstItem="SPG-GI-lga" firstAttribute="top" secondItem="bCl-8Z-8LC" secondAttribute="bottom" constant="20" id="0uC-w0-Ay2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aJ5-UK-x18" secondAttribute="trailing" id="6D2-IY-fAx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Yab-KU-zoz" secondAttribute="trailing" id="7Ln-Av-5KY"/>
+                            <constraint firstItem="S8k-9u-pZy" firstAttribute="top" secondItem="SPG-GI-lga" secondAttribute="bottom" constant="10" id="ALm-en-mzQ"/>
+                            <constraint firstItem="bCl-8Z-8LC" firstAttribute="top" secondItem="Zyx-pc-ppC" secondAttribute="top" constant="30" id="ELM-Vr-cfS"/>
+                            <constraint firstItem="S8k-9u-pZy" firstAttribute="leading" secondItem="Zyx-pc-ppC" secondAttribute="leadingMargin" id="Pkj-PS-rj7"/>
+                            <constraint firstAttribute="trailing" secondItem="bCl-8Z-8LC" secondAttribute="trailing" id="ZSf-sZ-ZaR"/>
+                            <constraint firstItem="SPG-GI-lga" firstAttribute="leading" secondItem="Zyx-pc-ppC" secondAttribute="leadingMargin" id="aaP-a6-OvJ"/>
+                            <constraint firstItem="bCl-8Z-8LC" firstAttribute="leading" secondItem="Zyx-pc-ppC" secondAttribute="leading" id="hc7-4o-kaS"/>
+                            <constraint firstItem="n8p-pS-b7B" firstAttribute="top" secondItem="S8k-9u-pZy" secondAttribute="bottom" constant="10" id="nkZ-20-myO"/>
+                            <constraint firstItem="n8p-pS-b7B" firstAttribute="top" secondItem="aJ5-UK-x18" secondAttribute="bottom" constant="10" id="tKv-oC-Okr"/>
+                            <constraint firstItem="aJ5-UK-x18" firstAttribute="top" secondItem="Yab-KU-zoz" secondAttribute="bottom" constant="10" id="wgr-gj-Lcs"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="zXr-jd-Msf" appends="YES" id="D0l-wQ-4j8"/>
                         </connections>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="filteredPhotoImageView" destination="bCl-8Z-8LC" id="HH0-0i-aqa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVJ-zk-2zY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="down" id="zXr-jd-Msf">
@@ -185,30 +234,72 @@
                         <action selector="dismissSegueInSharingView:" destination="k9Z-wr-a46" id="I2k-8n-mdi"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="fcc-5Q-rjL">
+                    <connections>
+                        <segue destination="c4o-jl-MCC" kind="presentation" identifier="sharingToPhotoView" modalTransitionStyle="crossDissolve" id="WB4-3r-aa8"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1722" y="687"/>
+            <point key="canvasLocation" x="2534" y="687"/>
+        </scene>
+        <!--Upload Photo View Controller-->
+        <scene sceneID="xc0-DP-WSh">
+            <objects>
+                <viewController id="XkM-ng-iVG" customClass="UploadPhotoViewController" customModule="Elisa" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eWf-4C-bKa"/>
+                        <viewControllerLayoutGuide type="bottom" id="ZRm-aH-Pps"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0gA-eo-gYS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="initial image" translatesAutoresizingMaskIntoConstraints="NO" id="JtL-gZ-710">
+                                <rect key="frame" x="0.0" y="20" width="600" height="430"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZRm-aH-Pps" firstAttribute="top" secondItem="JtL-gZ-710" secondAttribute="bottom" constant="150" id="cJJ-n7-GsO"/>
+                            <constraint firstAttribute="trailing" secondItem="JtL-gZ-710" secondAttribute="trailing" id="fQd-vw-U25"/>
+                            <constraint firstItem="JtL-gZ-710" firstAttribute="top" secondItem="eWf-4C-bKa" secondAttribute="bottom" id="qqe-JH-hPx"/>
+                            <constraint firstItem="JtL-gZ-710" firstAttribute="leading" secondItem="0gA-eo-gYS" secondAttribute="leading" id="yPq-m4-dH1"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Uqf-K8-NJi"/>
+                    <connections>
+                        <outlet property="uploadImageView" destination="JtL-gZ-710" id="j9R-GX-LEm"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="uploadToEditingSegue" animates="NO" id="jJu-Ri-Bai"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N1J-BU-LIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079" y="712"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="7Pj-zN-HYo">
+        <scene sceneID="qYJ-26-4SG">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qjt-xU-B8P" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OEb-aU-7mw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FFs-Q9-BWZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ggf-6Q-C3G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="zuq-F9-8iX"/>
+                        <segue destination="XkM-ng-iVG" kind="relationship" relationship="rootViewController" id="DJo-ue-Pwf"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zMl-1C-KKT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmN-8q-k5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="151" y="698"/>
+            <point key="canvasLocation" x="267" y="712"/>
         </scene>
     </scenes>
     <resources>
-        <image name="golden gate" width="1500" height="500"/>
+        <image name="facebook" width="128" height="128"/>
+        <image name="initial image" width="1499" height="707"/>
+        <image name="ios_photos" width="128" height="128"/>
+        <image name="twitter" width="128" height="128"/>
+        <image name="weibo" width="128" height="128"/>
     </resources>
 </document>
