@@ -9,17 +9,22 @@
 import UIKit
 
 class PhotoViewController: UIViewController {
+    
+    var filteredPhoto: UIImage?
 
     @IBOutlet weak var bigImageView: UIImageView!
     
-    @IBAction func dismissSegueInPhotoView(sender: UITapGestureRecognizer) {
+    @IBAction func dismissSegueInPhotoView(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        bigImageView.image = filteredPhoto
+
     }
 
     override func didReceiveMemoryWarning() {

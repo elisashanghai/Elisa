@@ -10,10 +10,10 @@ import UIKit
 import ImageIO
 
 enum FilterType {
-    case Neon, StarryNight, Hue
+    case Purple, StarryNight, Hue, Neon
     
     static func allFilterTypes() -> [FilterType]{
-        return [Neon, StarryNight, Hue]
+        return [Purple, StarryNight, Hue, Neon]
     }
 }
 
@@ -47,6 +47,8 @@ class Filter {
             filterDifferenceBlendMode()
         case .Hue:
             filterHueAdjust()
+        case .Purple:
+            filterColorPolynomial()
         }
         outputUIImage = imageToEdit
         return outputUIImage
@@ -93,24 +95,24 @@ class Filter {
 //        produceImage()
 //    }
 //    
-//    
-//    @IBAction func TappedColorPolynomial(sender: AnyObject) {
-//        specialEffect = CIFilter(name: "CIColorPolynomial")
-//        transformImage()
-//        let r: [CGFloat] = [0.0, 0.0, 0.0, 0.4]
-//        let g: [CGFloat] = [0.0, 0.0, 0.5, 0.8]
-//        let b: [CGFloat] = [0.0, 0.0, 0.5, 0.1]
-//        let a: [CGFloat] = [0.0, 1.0, 1.0, 1.0]
-//        
-//        specialEffect!.setValue(CIVector(values: r, count: r.count), forKey: "inputRedCoefficients")
-//        specialEffect!.setValue(CIVector(values: g, count: g.count), forKey: "inputGreenCoefficients")
-//        specialEffect!.setValue(CIVector(values: b, count: b.count), forKey: "inputBlueCoefficients")
-//        specialEffect!.setValue(CIVector(values: a, count: a.count), forKey: "inputAlphaCoefficients")
-//        
-//        produceImage()
-//    }
-//    
-//    
+    
+   private func filterColorPolynomial() {
+        specialEffect = CIFilter(name: "CIColorPolynomial")
+        aCIImageToEdit = CIImage(image: imageToEdit!)
+        specialEffect!.setValue(aCIImageToEdit, forKey: kCIInputImageKey)
+        let r: [CGFloat] = [0.0, 0.0, 0.0, 0.4]
+        let g: [CGFloat] = [0.0, 0.0, 0.5, 0.8]
+        let b: [CGFloat] = [0.0, 0.0, 0.5, 0.1]
+        let a: [CGFloat] = [0.0, 1.0, 1.0, 1.0]
+        
+        specialEffect!.setValue(CIVector(values: r, count: r.count), forKey: "inputRedCoefficients")
+        specialEffect!.setValue(CIVector(values: g, count: g.count), forKey: "inputGreenCoefficients")
+        specialEffect!.setValue(CIVector(values: b, count: b.count), forKey: "inputBlueCoefficients")
+        specialEffect!.setValue(CIVector(values: a, count: a.count), forKey: "inputAlphaCoefficients")
+        
+        produceImage()
+    }
+  
     private func filterHueAdjust() {
         //        inputAngle Default value: 0.00
         

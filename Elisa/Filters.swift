@@ -11,8 +11,11 @@ import Foundation
 class Filters {
     var filters = [Filter]()
     init(){
-        for currentFilter in FilterType.allFilterTypes(){
-            filters.append(Filter(filterType: currentFilter))
-        }
+//        for currentFilter in FilterType.allFilterTypes(){
+//            filters.append(Filter(filterType: currentFilter))
+//        }
+        filters.append(Filter(filterType: FilterType.Hue))
+        filters.append(Filter(filterType: FilterType.Purple))
+        filters.append(Filter(filterType: FilterType.StarryNight))
     }
 }
