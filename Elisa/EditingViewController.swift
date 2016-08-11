@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import ImageIO
 
 class EditingViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate
 {
@@ -15,7 +16,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     var newPhoto: Bool = true
     var photoToEdit: UIImage?
     var previewToEdit: UIImage?
-    var metadata: [String : AnyObject]?
+    var dict: [NSObject : AnyObject]?
     let myScreenSize: CGRect = UIScreen.mainScreen().bounds
     let myFilters = Filters()
     var mySelectedFilter: Filter? = nil
@@ -27,6 +28,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     var rightPreview: UIImage?
     var filterImage: UIImage?
     var filteredPreview: UIImage?
+    var myImageSource: CGImageSource?
     
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
@@ -34,6 +36,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        photoToEdit = UIImage(named: "example")
         previewToEdit = imageScaling(photoToEdit!, scaledToWidth: myScreenSize.width)
         photoPreviewImageView.image = previewToEdit
         collectionViewLayout = CustomImageFlowLayout()
@@ -121,8 +124,9 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
         if (segue.identifier == "editingToSharingSegue"){
             let toSharing = segue.destinationViewController as! SharingViewController
             toSharing.photoToEdit = photoToEdit
-            toSharing.metadata = metadata
-            toSharing.mySelectedFilter = mySelectedFilter!
+            toSharing.dict = dict
+            toSharing.mySelectedFilter = mySelectedFilter
+            toSharing.myImageSource = myImageSource
         }
     }
 

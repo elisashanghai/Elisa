@@ -14,8 +14,10 @@ class Filters {
 //        for currentFilter in FilterType.allFilterTypes(){
 //            filters.append(Filter(filterType: currentFilter))
 //        }
-        filters.append(Filter(filterType: FilterType.Hue))
-        filters.append(Filter(filterType: FilterType.Purple))
+//        filters.append(Filter(filterType: FilterType.Hue))
+//        filters.append(Filter(filterType: FilterType.Purple))
         filters.append(Filter(filterType: FilterType.StarryNight))
+        filters.append(Filter(filterType: FilterType.Neon))
+        filters.append(Filter(filterType: FilterType.CrossPolynomial))
     }
 }
