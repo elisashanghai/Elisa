@@ -36,7 +36,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        photoToEdit = UIImage(named: "example")
+//        photoToEdit = UIImage(named: "example")
         previewToEdit = imageScaling(photoToEdit!, scaledToWidth: myScreenSize.width)
         photoPreviewImageView.image = previewToEdit
         collectionViewLayout = CustomImageFlowLayout()
@@ -47,11 +47,13 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
         let width = myScreenSize.width / numberOfItemsPerRow
         let layout = collectionViewLayout as UICollectionViewFlowLayout
         layout.itemSize = CGSizeMake(width, width)
-//                let tapGestureRecognizer2 = UITapGestureRecognizer(target: self, action: #selector(photoEditTapped))
-//        photoPreviewImageView.userInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(photoEditTapped))
+        photoPreviewImageView.userInteractionEnabled = true
         
-//            photoCollectionView.addGestureRecognizer(tapGestureRecognizer2)
+        photoPreviewImageView.addGestureRecognizer(tapGestureRecognizer)
         photoCollectionView.allowsMultipleSelection = false
+       
+
         
     }
     
@@ -63,8 +65,8 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     
     func photoEditTapped(){
         
-        editPreviewImage = mySelectedFilter?.applyFilter(previewToEdit!, filterType: (mySelectedFilter?.filterType)!)
-        photoPreviewImageView.image = editPreviewImage
+        photoPreviewImageView.image = previewToEdit
+        mySelectedFilter = nil
     }
     
        
