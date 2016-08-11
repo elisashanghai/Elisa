@@ -13,15 +13,11 @@ class PhotoViewController: UIViewController,UIScrollViewDelegate {
     
     var filteredPhoto: UIImage?
     var bigImageView = UIImageView()
-     let myScreenSize: CGRect = UIScreen.mainScreen().bounds
+    let myScreenSize: CGRect = UIScreen.mainScreen().bounds
     
  
     @IBOutlet weak var scrollView: UIScrollView!
 
-   
-    @IBAction func dismissSegueInPhotoView(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

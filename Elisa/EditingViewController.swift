@@ -36,6 +36,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        photoToEdit = UIImage(named: "example")
         previewToEdit = imageScaling(photoToEdit!, scaledToWidth: myScreenSize.width)
         photoPreviewImageView.image = previewToEdit
         collectionViewLayout = CustomImageFlowLayout()
@@ -124,7 +125,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
             let toSharing = segue.destinationViewController as! SharingViewController
             toSharing.photoToEdit = photoToEdit
             toSharing.dict = dict
-            toSharing.mySelectedFilter = mySelectedFilter!
+            toSharing.mySelectedFilter = mySelectedFilter
             toSharing.myImageSource = myImageSource
         }
     }

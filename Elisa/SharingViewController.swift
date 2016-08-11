@@ -14,15 +14,22 @@ import CoreImage
 import MobileCoreServices
 
 class SharingViewController: UIViewController {
-    var mySelectedFilter = Filter(filterType: FilterType.Hue)
-    var photoToEdit = UIImage(named: "golden gate")
+    var mySelectedFilter = Filter?()
+    var photoToEdit: UIImage?
     var dict: [NSObject : AnyObject]?
     var filteredPhoto: UIImage?
     var myImageSource: CGImageSource?
     
 
+    @IBOutlet weak var facebookButton: UIButton!
+    
+    @IBOutlet weak var twitterButton: UIButton!
+    
+    @IBOutlet weak var camerarollButton: UIButton!
     @IBOutlet weak var filteredPhotoImageView: UIImageView!
+    @IBOutlet weak var ratingButton: UIButton!
     @IBAction func buttonFacebookTapped(sender: AnyObject) {
+        facebookButton.setImage(UIImage(named: "facebook-finished"), forState: UIControlState.Normal)
         let composeSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
         composeSheet.setInitialText("Hello, Facebook!")
         composeSheet.addImage(filteredPhoto)
@@ -31,6 +38,7 @@ class SharingViewController: UIViewController {
     }
     
     @IBAction func buttonTwitterTapped(sender: AnyObject) {
+        twitterButton.setImage(UIImage(named: "twitter-finished"), forState: UIControlState.Normal)
         let composeSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
         composeSheet.setInitialText("Hello, Twitter!")
         composeSheet.addImage(filteredPhoto)
@@ -39,13 +47,23 @@ class SharingViewController: UIViewController {
 
     }
     
+    @IBAction func buttonRatingTapped(sender: AnyObject) {
+        ratingButton.setImage(UIImage(named: "like-finished"), forState: UIControlState.Normal)
+    }
+
+    
+    
     @IBAction func buttonCameraRollTapped(sender: AnyObject) {
-        print(dict)
+        camerarollButton.setImage(UIImage(named: "ios_photos-finished"), forState: UIControlState.Normal)
+
+        
+        
+//        print(dict)
 //        frameReadyToSave(filteredPhoto!, withExifAttachments: dict!)
         
         
         
-//        UIImageWriteToSavedPhotosAlbum(filteredPhoto!, nil, nil, nil)
+        UIImageWriteToSavedPhotosAlbum(filteredPhoto!, nil, nil, nil)
     }
     
     /*
@@ -111,7 +129,11 @@ class SharingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        filteredPhoto = mySelectedFilter.applyFilter(photoToEdit!, filterType: mySelectedFilter.filterType)
+        if mySelectedFilter == nil {
+            filteredPhoto = photoToEdit
+        }
+        else {
+            filteredPhoto = mySelectedFilter!.applyFilter(photoToEdit!, filterType: mySelectedFilter!.filterType)}
         filteredPhotoImageView.image = filteredPhoto
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(filteredPhotoTapped))
         filteredPhotoImageView.userInteractionEnabled = true
