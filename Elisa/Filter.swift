@@ -10,7 +10,7 @@ import UIKit
 import ImageIO
 
 enum FilterType {
-    case Purple, StarryNight, Hue, Neon
+    case Purple, StarryNight, Hue, Neon, CrossPolynomial
     
     static func allFilterTypes() -> [FilterType]{
         return [Purple, StarryNight, Hue, Neon]
@@ -42,13 +42,15 @@ class Filter {
         case .Neon:
             filterVibrance()
             filterCIEdges()
-            filterBloom()
+//            filterBloom()
         case .StarryNight:
             filterDifferenceBlendMode()
         case .Hue:
             filterHueAdjust()
         case .Purple:
             filterColorPolynomial()
+        case .CrossPolynomial:
+            filterCrossPolynomial()
         }
         outputUIImage = imageToEdit
         return outputUIImage
@@ -163,23 +165,24 @@ class Filter {
         specialEffect!.setValue(0.9, forKey: "inputAmount")
         produceImage()
     }
+
+    private func filterCrossPolynomial() {
+        //    inputRedCoefficientsDefault value: [1 0 0 0 0 0 0 0 0 0] Identity: [1 0 0 0 0 0 0 0 0 0]
+        //    inputGreenCoefficients Default value: [0 1 0 0 0 0 0 0 0 0] Identity: [0 1 0 0 0 0 0 0 0 0]
+        //    inputBlueCoefficients Default value: [0 0 1 0 0 0 0 0 0 0] Identity: [0 0 1 0 0 0 0 0 0 0]
+        specialEffect = CIFilter(name: "CIColorCrossPolynomial")
+        aCIImageToEdit = CIImage(image: imageToEdit!)
+        specialEffect!.setValue(aCIImageToEdit, forKey: kCIInputImageKey)
+        let r: [CGFloat] = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let g: [CGFloat] = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let b: [CGFloat] = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        
+        specialEffect!.setValue(CIVector(values: r, count: r.count), forKey: "inputRedCoefficients")
+        specialEffect!.setValue(CIVector(values: g, count: g.count), forKey: "inputGreenCoefficients")
+        specialEffect!.setValue(CIVector(values: b, count: b.count), forKey: "inputBlueCoefficients")
+        produceImage()
+    }
 //
-//    @IBAction func TappedColorCrossPolynomial(sender: AnyObject) {
-//        //    inputRedCoefficientsDefault value: [1 0 0 0 0 0 0 0 0 0] Identity: [1 0 0 0 0 0 0 0 0 0]
-//        //    inputGreenCoefficients Default value: [0 1 0 0 0 0 0 0 0 0] Identity: [0 1 0 0 0 0 0 0 0 0]
-//        //    inputBlueCoefficients Default value: [0 0 1 0 0 0 0 0 0 0] Identity: [0 0 1 0 0 0 0 0 0 0]
-//        specialEffect = CIFilter(name: "CIColorCrossPolynomial")
-//        transformImage()
-//        let r: [CGFloat] = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-//        let g: [CGFloat] = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-//        let b: [CGFloat] = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-//        
-//        specialEffect!.setValue(CIVector(values: r, count: r.count), forKey: "inputRedCoefficients")
-//        specialEffect!.setValue(CIVector(values: g, count: g.count), forKey: "inputGreenCoefficients")
-//        specialEffect!.setValue(CIVector(values: b, count: b.count), forKey: "inputBlueCoefficients")
-//        produceImage()
-//    }
-//    
 //    
 //    
 //    

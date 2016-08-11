@@ -8,12 +8,18 @@
 
 import UIKit
 import Social
+import ImageIO
+import Photos
+import CoreImage
+import MobileCoreServices
 
 class SharingViewController: UIViewController {
     var mySelectedFilter = Filter(filterType: FilterType.Hue)
     var photoToEdit = UIImage(named: "golden gate")
-    var metadata: [String : AnyObject]?
+    var dict: [NSObject : AnyObject]?
     var filteredPhoto: UIImage?
+    var myImageSource: CGImageSource?
+    
 
     @IBOutlet weak var filteredPhotoImageView: UIImageView!
     @IBAction func buttonFacebookTapped(sender: AnyObject) {
@@ -34,9 +40,68 @@ class SharingViewController: UIViewController {
     }
     
     @IBAction func buttonCameraRollTapped(sender: AnyObject) {
-        UIImageWriteToSavedPhotosAlbum(filteredPhoto!, nil, nil, nil)
+        print(dict)
+//        frameReadyToSave(filteredPhoto!, withExifAttachments: dict!)
+        
+        
+        
+//        UIImageWriteToSavedPhotosAlbum(filteredPhoto!, nil, nil, nil)
     }
-
+    
+    /*
+    PHFetchResult *savedAssets = [PHAsset fetchAssetsWithLocalIdentifiers:[NSArray arrayWithObjects:myAssetURL, nil] options:nil];
+    [savedAssets enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
+    PHImageRequestOptions *cropToSquare = [[PHImageRequestOptions alloc] init];
+    cropToSquare.synchronous = YES;
+    [[PHImageManager defaultManager] requestImageDataForAsset:asset
+    options:cropToSquare
+    resultHandler:
+    ^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
+    CIImage* ciImage = [CIImage imageWithData:imageData];
+    NSMutableDictionary *metadataAsMutable = [ciImage.properties mutableCopy];
+    CGImageSourceRef source = Nil;
+    NSDictionary* sourceOptionsDict = [NSDictionary dictionaryWithObjectsAndKeys:dataUTI ,kCGImageSourceTypeIdentifierHint,nil];
+    source = CGImageSourceCreateWithData((__bridge CFDataRef) imageData,  (__bridge CFDictionaryRef) sourceOptionsDict);
+    CFStringRef UTI = CGImageSourceGetType(source);
+    NSMutableData *dest_data = [NSMutableData data];
+    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)dest_data,UTI,1,NULL);
+    CGImageDestinationAddImageFromSource(destination,source,0, (__bridge CFDictionaryRef) metadataAsMutable);
+    BOOL success = NO;
+    success = CGImageDestinationFinalize(destination);
+    
+    if(!success) {
+    }
+    [dest_data writeToFile:myTrumbImageFileName atomically:YES];
+    CFRelease(destination);
+    CFRelease(source);
+    }];
+    }];
+    */
+    
+ 
+    func frameReadyToSave(image: UIImage, withExifAttachments mutableDict: [NSObject : AnyObject]) {
+        let imageData: NSData = UIImageJPEGRepresentation(image, 1.0)!
+        let source: CGImageSourceRef = CGImageSourceCreateWithData((imageData as CFDataRef), nil)!
+        
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.PicturesDirectory, .UserDomainMask, true)[0];
+        let filePath="\(documentsPath)/";
+        let tmpURL: NSURL = NSURL.fileURLWithPath(filePath)
+        
+        //modify to your needs
+        let destination: CGImageDestinationRef = CGImageDestinationCreateWithURL((tmpURL as CFURLRef), kUTTypeJPEG, 1, nil)!
+        CGImageDestinationAddImageFromSource(destination, source, 0, (mutableDict as CFDictionaryRef))
+        CGImageDestinationFinalize(destination)
+//        CFRelease(source)
+//        CFRelease(destination)
+        PHPhotoLibrary.sharedPhotoLibrary().performChanges({() -> Void in
+            PHAssetChangeRequest.creationRequestForAssetFromImageAtFileURL(tmpURL)
+            }, completionHandler: {(success: Bool, error: NSError?) -> Void in
+                //cleanup the tmp file after import, if needed
+                //cleanup the tmp file after import, if needed
+        })
+    }
+    
+ 
     
     @IBAction func dismissSegueInSharingView(sender: UISwipeGestureRecognizer) {
         self.dismissViewControllerAnimated(true, completion: nil)

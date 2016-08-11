@@ -8,6 +8,7 @@
 
 import UIKit
 import MobileCoreServices
+import ImageIO
 
 class EditingViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate
 {
@@ -15,7 +16,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     var newPhoto: Bool = true
     var photoToEdit: UIImage?
     var previewToEdit: UIImage?
-    var metadata: [String : AnyObject]?
+    var dict: [NSObject : AnyObject]?
     let myScreenSize: CGRect = UIScreen.mainScreen().bounds
     let myFilters = Filters()
     var mySelectedFilter: Filter? = nil
@@ -27,6 +28,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     var rightPreview: UIImage?
     var filterImage: UIImage?
     var filteredPreview: UIImage?
+    var myImageSource: CGImageSource?
     
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
@@ -121,8 +123,9 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
         if (segue.identifier == "editingToSharingSegue"){
             let toSharing = segue.destinationViewController as! SharingViewController
             toSharing.photoToEdit = photoToEdit
-            toSharing.metadata = metadata
+            toSharing.dict = dict
             toSharing.mySelectedFilter = mySelectedFilter!
+            toSharing.myImageSource = myImageSource
         }
     }
 
