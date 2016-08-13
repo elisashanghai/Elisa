@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Social
 import ImageIO
 import Photos
-import CoreImage
 import MobileCoreServices
+import AssetsLibrary
 
 class SharingViewController: UIViewController {
     var mySelectedFilter = Filter?()
@@ -19,33 +18,39 @@ class SharingViewController: UIViewController {
     var dict: [NSObject : AnyObject]?
     var filteredPhoto: UIImage?
     var myImageSource: CGImageSource?
+    var asset: PHAsset?
+    var filteredPreview: UIImage?
+
     
 
-    @IBOutlet weak var facebookButton: UIButton!
+//    @IBOutlet weak var facebookButton: UIButton!
     
-    @IBOutlet weak var twitterButton: UIButton!
+//    @IBOutlet weak var twitterButton: UIButton!
     
     @IBOutlet weak var camerarollButton: UIButton!
     @IBOutlet weak var filteredPhotoImageView: UIImageView!
-    @IBOutlet weak var ratingButton: UIButton!
-    @IBAction func buttonFacebookTapped(sender: AnyObject) {
-        facebookButton.setImage(UIImage(named: "facebook-finished"), forState: UIControlState.Normal)
-        let composeSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-        composeSheet.setInitialText("Hello, Facebook!")
-        composeSheet.addImage(filteredPhoto)
-        
-        presentViewController(composeSheet, animated: true, completion: nil)
-    }
     
-    @IBAction func buttonTwitterTapped(sender: AnyObject) {
-        twitterButton.setImage(UIImage(named: "twitter-finished"), forState: UIControlState.Normal)
-        let composeSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-        composeSheet.setInitialText("Hello, Twitter!")
-        composeSheet.addImage(filteredPhoto)
-        
-        presentViewController(composeSheet, animated: true, completion: nil)
-
-    }
+    @IBOutlet weak var ratingButton: UIButton!
+    
+    
+//    @IBAction func buttonFacebookTapped(sender: AnyObject) {
+//        facebookButton.setImage(UIImage(named: "facebook-finished"), forState: UIControlState.Normal)
+//        let composeSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+//        composeSheet.setInitialText("Hello, Facebook!")
+//        composeSheet.addImage(filteredPhoto)
+//        
+//        presentViewController(composeSheet, animated: true, completion: nil)
+//    }
+//    
+//    @IBAction func buttonTwitterTapped(sender: AnyObject) {
+//        twitterButton.setImage(UIImage(named: "twitter-finished"), forState: UIControlState.Normal)
+//        let composeSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+//        composeSheet.setInitialText("Hello, Twitter!")
+//        composeSheet.addImage(filteredPhoto)
+//        
+//        presentViewController(composeSheet, animated: true, completion: nil)
+//
+//    }
     
     @IBAction func buttonRatingTapped(sender: AnyObject) {
         ratingButton.setImage(UIImage(named: "like-finished"), forState: UIControlState.Normal)
@@ -55,15 +60,46 @@ class SharingViewController: UIViewController {
     
     @IBAction func buttonCameraRollTapped(sender: AnyObject) {
         camerarollButton.setImage(UIImage(named: "ios_photos-finished"), forState: UIControlState.Normal)
-
         
+        
+        
+        
+        
+//        ALAssetsLibrary methods (work)
+        let library: ALAssetsLibrary = ALAssetsLibrary()
+        library.writeImageToSavedPhotosAlbum(filteredPhoto?.CGImage, metadata: dict, completionBlock: nil)
+        print(dict)
+       
+        
+        
+        /* ImageIO methods(not working)
+        
+        let UTI = CGImageSourceGetType(myImageSource!)! as CFStringRef
+        let imageData: NSMutableData = NSMutableData()
+        let destination: CGImageDestination? = CGImageDestinationCreateWithData(imageData, UTI, 1, nil)
+        if destination == nil{
+            NSLog("***Could not create image destination ***")
+        }
+        
+        CGImageDestinationAddImageFromSource(destination!, myImageSource!, 0, dict)
+        
+        var success: Bool = false
+        success = CGImageDestinationFinalize(destination!)
+        
+        if success == false {
+        NSLog("***Could not create data from image destination ***")
+        }else{
+        print("Final properties \(dict)")
+        }
+ 
+ */
+//    frameReadyToSave(filteredPhoto!, withExifAttachments: dict!)
         
 //        print(dict)
-//        frameReadyToSave(filteredPhoto!, withExifAttachments: dict!)
         
         
         
-        UIImageWriteToSavedPhotosAlbum(filteredPhoto!, nil, nil, nil)
+//        UIImageWriteToSavedPhotosAlbum(filteredPhoto!, nil, nil, nil)
     }
     
     /*
@@ -96,6 +132,17 @@ class SharingViewController: UIViewController {
     }];
     */
     
+    
+    func getAssetFullImage(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.defaultManager()
+        let option = PHImageRequestOptions()
+        var fullImage = UIImage()
+        option.synchronous = true
+        manager.requestImageForAsset(asset, targetSize: PHImageManagerMaximumSize, contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+            fullImage = result!
+        })
+        return fullImage
+    }
  
     func frameReadyToSave(image: UIImage, withExifAttachments mutableDict: [NSObject : AnyObject]) {
         let imageData: NSData = UIImageJPEGRepresentation(image, 1.0)!
@@ -129,18 +176,28 @@ class SharingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if mySelectedFilter == nil {
-            filteredPhoto = photoToEdit
-        }
-        else {
-            filteredPhoto = mySelectedFilter!.applyFilter(photoToEdit!, filterType: mySelectedFilter!.filterType)}
-        filteredPhotoImageView.image = filteredPhoto
+        filteredPhotoImageView.image = filteredPreview
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(filteredPhotoTapped))
         filteredPhotoImageView.userInteractionEnabled = true
         filteredPhotoImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            self.photoToEdit = self.getAssetFullImage(self.asset!)
+            
+            if self.mySelectedFilter == nil {
+                self.filteredPhoto = self.photoToEdit
+            }
+            else {
+                self.filteredPhoto = self.mySelectedFilter!.applyFilter(self.photoToEdit!, filterType: self.mySelectedFilter!.filterType)}
+            print("filteredPhoto size: \(self.filteredPhoto?.size.width)")
+            
+        }
 
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -153,7 +210,10 @@ class SharingViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "sharingToPhotoView"){
             let toPhotoView = segue.destinationViewController as! PhotoViewController
-            toPhotoView.filteredPhoto = filteredPhoto
+            toPhotoView.filteredPhoto = filteredPreview
+            toPhotoView.asset = asset
+            toPhotoView.mySelectedFilter = mySelectedFilter
+//            toPhotoView.filteredPhoto = filteredPhoto
         }
     }
     

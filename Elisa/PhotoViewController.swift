@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Photos
+import ImageIO
 
 class PhotoViewController: UIViewController,UIScrollViewDelegate {
     
@@ -14,6 +16,11 @@ class PhotoViewController: UIViewController,UIScrollViewDelegate {
     var filteredPhoto: UIImage?
     var bigImageView = UIImageView()
     let myScreenSize: CGRect = UIScreen.mainScreen().bounds
+    var mySelectedFilter = Filter?()
+    var asset: PHAsset?
+    var isLoaded: Bool = false
+    var filteredPreview: UIImage?
+
     
  
     @IBOutlet weak var scrollView: UIScrollView!
@@ -23,9 +30,44 @@ class PhotoViewController: UIViewController,UIScrollViewDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        bigImageView.image = filteredPhoto
-        bigImageView.frame.size.height = (myScreenSize.width)
-        bigImageView.frame.size.width = (myScreenSize.width)/(filteredPhoto?.size.height)!*(filteredPhoto?.size.width)!
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            func getAssetFullImage(asset: PHAsset) -> UIImage {
+                
+                let manager = PHImageManager.defaultManager()
+                let option = PHImageRequestOptions()
+                var fullImage = UIImage()
+                option.synchronous = true
+                manager.requestImageForAsset(asset, targetSize: PHImageManagerMaximumSize, contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+                    fullImage = result!
+                })
+                return fullImage
+            }
+
+            
+            
+            let photoToEdit = getAssetFullImage(self.asset!)
+            
+            if self.mySelectedFilter == nil {
+                self.filteredPhoto = photoToEdit
+            }
+            else {
+                self.filteredPhoto = self.mySelectedFilter!.applyFilter(photoToEdit, filterType: self.mySelectedFilter!.filterType)}
+            print("filteredPhoto size: \(self.filteredPhoto?.size.width)")
+            self.isLoaded = true
+             dispatch_async(dispatch_get_main_queue()) {
+                self.bigImageView.image = self.filteredPhoto
+            }
+            
+        }
+        
+        
+            bigImageView.image = filteredPhoto
+            bigImageView.frame.size.height = (myScreenSize.width)
+            bigImageView.frame.size.width = (myScreenSize.width)/(filteredPhoto?.size.height)!*(filteredPhoto?.size.width)!
+        
+        
         bigImageView.frame.origin.x = 0
         bigImageView.frame.origin.y = 0
         

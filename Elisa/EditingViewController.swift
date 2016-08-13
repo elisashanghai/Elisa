@@ -9,12 +9,12 @@
 import UIKit
 import MobileCoreServices
 import ImageIO
+import Photos
 
 class EditingViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate
 {
     
     var newPhoto: Bool = true
-    var photoToEdit: UIImage?
     var previewToEdit: UIImage?
     var dict: [NSObject : AnyObject]?
     let myScreenSize: CGRect = UIScreen.mainScreen().bounds
@@ -28,7 +28,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     var rightPreview: UIImage?
     var filterImage: UIImage?
     var filteredPreview: UIImage?
-    var myImageSource: CGImageSource?
+    var asset: PHAsset?
     
     @IBOutlet weak var photoPreviewImageView: UIImageView!
     @IBOutlet weak var photoCollectionView: UICollectionView!
@@ -37,7 +37,9 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
 //        photoToEdit = UIImage(named: "example")
-        previewToEdit = imageScaling(photoToEdit!, scaledToWidth: myScreenSize.width)
+//        photoToEdit = getAssetFullImage(asset!)
+//        previewToEdit = imageScaling(photoToEdit!, scaledToWidth: myScreenSize.width)
+        previewToEdit = getAssetThumbnail(asset!)
         photoPreviewImageView.image = previewToEdit
         collectionViewLayout = CustomImageFlowLayout()
         photoCollectionView.collectionViewLayout = collectionViewLayout
@@ -69,7 +71,21 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
         mySelectedFilter = nil
     }
     
-       
+
+    
+
+    
+    func getAssetThumbnail(asset: PHAsset) -> UIImage {
+        let manager = PHImageManager.defaultManager()
+        let option = PHImageRequestOptions()
+        var thumbnail = UIImage()
+        option.synchronous = true
+        manager.requestImageForAsset(asset, targetSize: photoPreviewImageView.frame.size, contentMode: .AspectFit, options: option, resultHandler: {(result, info)->Void in
+            thumbnail = result!
+        })
+        return thumbnail
+    }
+    
    
     
     override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
@@ -125,10 +141,10 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "editingToSharingSegue"){
             let toSharing = segue.destinationViewController as! SharingViewController
-            toSharing.photoToEdit = photoToEdit
             toSharing.dict = dict
             toSharing.mySelectedFilter = mySelectedFilter
-            toSharing.myImageSource = myImageSource
+            toSharing.asset = asset
+            toSharing.filteredPreview = filteredPreview
         }
     }
 

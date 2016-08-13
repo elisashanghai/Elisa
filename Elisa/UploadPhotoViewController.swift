@@ -18,9 +18,8 @@ class UploadPhotoViewController: UIViewController,UINavigationControllerDelegate
     @IBOutlet weak var uploadImageView: UIImageView!
     
     let initialImage = UIImage(named: "initial image")
-    var photoToEdit: UIImage?
     var dict: [NSObject : AnyObject]?
-    var myImageSource: CGImageSource?
+    var asset: PHAsset?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +47,8 @@ class UploadPhotoViewController: UIViewController,UINavigationControllerDelegate
         }
         
     }
+    
+
 
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
  
@@ -91,116 +92,40 @@ class UploadPhotoViewController: UIViewController,UINavigationControllerDelegate
        
         let referenceURL = info[UIImagePickerControllerReferenceURL] as! NSURL
         let cfurl = CFBridgingRetain(referenceURL) as! CFURLRef
-        myImageSource = CGImageSourceCreateWithURL(cfurl, nil)
-        photoToEdit = info[UIImagePickerControllerOriginalImage] as? UIImage
+//        myImageSource = CGImageSourceCreateWithURL(cfurl, nil)
+//        photoToEdit = info[UIImagePickerControllerOriginalImage] as? UIImage
+//        let photo2 = info[UIImagePickerControllerEditedImage] as? UIImage
+//        print("uploaded original size: \(photoToEdit?.size.width)")
+//        print("EditedImage original size: \(photo2?.size.width)")
+        
+        let result = PHAsset.fetchAssetsWithALAssetURLs([referenceURL], options: nil)
+         asset = result.firstObject as? PHAsset
+//                let newAssetRequest: PHAssetChangeRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
+        
+        
+   
+
+        
         self.metadata(referenceURL)
         performSegueWithIdentifier("uploadToEditingSegue", sender: nil)
         self.dismissViewControllerAnimated(true, completion: nil)
-        
-//        let result = PHAsset.fetchAssetsWithALAssetURLs([url], options: nil)
-//        let asset = result.firstObject as! PHAsset
-//        let newAssetRequest: PHAssetChangeRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
-//        
-//       
-//        let manager = PHImageManager.defaultManager()
-//        manager.requestImageForAsset(asset, targetSize: CGSizeMake(100, 100), contentMode: .AspectFit , options: nil) { (UIImage, info: [NSObject : AnyObject]?) in
-//            print("result")
-//        }
- 
-        
-     
-    }
-    
-    func metadata(url: NSURL) {
-        let asset = PHAsset.fetchAssetsWithALAssetURLs([url], options: nil).firstObject as! PHAsset
-            // get photo info from this asset
-        let imageRequestOptions: PHImageRequestOptions = PHImageRequestOptions()
-        imageRequestOptions.synchronous = true
-        let manager = PHImageManager.defaultManager()
-        
-        manager.requestImageDataForAsset(asset, options: imageRequestOptions) {(imageData, dataUTI, orientation, info) -> Void in
-            self.dict = self.metadataFromImageData(imageData!)!
-        }
-       
-        /*
-        let url = CFURLCreateFromFileSystemRepresentation(kCFAllocatorDefault, UnsafePointer<UInt8>(), <#T##CFIndex#>, false)
-            
-            NSURL(string: "http://jwphotographic.co.uk/Images/1.jpg")
-        CGImageSourceCreateWithURL(<#T##url: CFURL##CFURL#>, <#T##options: CFDictionary?##CFDictionary?#>)
-        let imageSource = CGImageSourceCreateWithURL(url, nil)
-        let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource, 0, nil) as Dictionary
-        
-        println(imageProperties)
-        */
-        
-        
-        /*
-        var imgPath: String = "\(NSBundle.mainBundle().resourcePath)/sample.jpg"
-        var cgImage: CGImageSourceRef = CGImageSourceCreateWithURL(NSURL.fileURLWithPath(imgPath), nil)!
-        var exifDict = NSMutableDictionary()
-        exifDict.setObject("テストabc123", forKey: kCGImagePropertyExifUserComment)   //エラー1
-        var imageData: NSMutableData = NSMutableData()
-        var dest: CGImageDestinationRef = CGImageDestinationCreateWithData(imageData, CGImageSourceGetType(cgImage)!, 1, nil)!
-        CGImageDestinationAddImageFromSource(dest, cgImage, 0, NSDictionary.dictionaryWithObjectsAndKeys(exifDictkCGImagePropertyExifDictionarynil))   //エラー2
-        CGImageDestinationFinalize(dest)
-        var exportPath: String = "\(NSBundle.mainBundle().resourcePath)/export.jpg"
-        NSLog("exportPath : %@", exportPath)
-        imageData.writeToFile(exportPath, atomically: true)
-        CFRelease(cgImage)    //エラー3
-        CFRelease(dest)    //エラー3
-        */
-        
-        /*
-        let imageData = UIImagePNGRepresentation(image)
-        let coreImageData = CFDataCreate(kCFAllocatorDefault, imageData!.bytes.advancedBy(0), imageData?.length)
-        let source = CGImageSourceCreateWithData(coreImageData, NULL)
-        
-//        let imageSource = CGImageSourceCreateWithData(imageData as! CFDataRef, nil)
-        
-        let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSource!, 0, nil)! as NSDictionary;
-        
-        let exifDict = imageProperties.valueForKey("{Exif}")  as! NSDictionary;
-        let dateTimeOriginal = exifDict.valueForKey("DateTimeOriginal") as! NSString;
-        print ("DateTimeOriginal: \(dateTimeOriginal)");
-        
-        let lensMake = exifDict.valueForKey("LensMake");
-        print ("LensMake: \(lensMake)");
-    
-        this is an example
-        let aperture = imageProperties[kCGImagePropertyGPSLatitude] as! NSNumber!
- 
- */
-        
-        /*
-         these are all being defined as nil
-         Load the ones from the exif data of the file
-         let lensUsed = imageProperties[kCGImagePropertyExifFocalLength]
-         let aperture = imageProperties[kCGImagePropertyExifApertureValue] as!
-         let isoSpeed = imageProperties[kCGImagePropertyExifISOSpeedRatings] as! NSNumber
-         let latitude = imageProperties[kCGImagePropertyGPSLatitude] as! NSNumber
-         let longitude = imageProperties[kCGImagePropertyGPSLongitude] as! NSNumber
-         let shutterSpeed = imageProperties[kCGImagePropertyExifShutterSpeedValue] as! NSNumber
-         let cameraName = imageProperties[kCGImagePropertyExifBodySerialNumber] as! NSNumber
-         */
-    }
-    
-    /*
- 
- 
-     
-             if (imageProperties) {
-                 NSDictionary *metadata = (__bridge NSDictionary *)imageProperties;
-                 CFRelease(imageProperties);
-                 CFRelease(imageSource);
-                 NSLog(@"Metadata of selected image%@",metadata);// It will display the metadata of image after converting NSData into NSDictionary
-                 return metadata;
-                 
-             }
-             CFRelease(imageSource);
-     
 
-     
-     */
+    }
+    
+        func metadata(url: NSURL) {
+            let asset = PHAsset.fetchAssetsWithALAssetURLs([url], options: nil).firstObject as! PHAsset
+                // get photo info from this asset
+            let imageRequestOptions: PHImageRequestOptions = PHImageRequestOptions()
+            imageRequestOptions.synchronous = true
+            let manager = PHImageManager.defaultManager()
+    
+            manager.requestImageDataForAsset(asset, options: imageRequestOptions) {(imageData, dataUTI, orientation, info) -> Void in
+                self.dict = self.metadataFromImageData(imageData!)!
+                print(self.dict)
+            }
+    }
+
+
     
     func metadataFromImageData(imageData: NSData) -> [NSObject : AnyObject]? {
         guard let imageSource = CGImageSourceCreateWithData((imageData as CFDataRef), nil) else {
@@ -228,9 +153,8 @@ class UploadPhotoViewController: UIViewController,UINavigationControllerDelegate
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "uploadToEditingSegue"){
             let toEditing = segue.destinationViewController as! EditingViewController
-            toEditing.photoToEdit = photoToEdit
             toEditing.dict = dict
-            toEditing.myImageSource = myImageSource
+            toEditing.asset = asset
         }
     }
     /*
