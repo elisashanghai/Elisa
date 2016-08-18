@@ -10,10 +10,10 @@ import UIKit
 import ImageIO
 
 enum FilterType {
-    case Purple, StarryNight, Hue, Neon, CrossPolynomial
+    case Purple,  StarryNight, Hue, Neon, CrossPolynomial, ColorClamp, MonoOrange, WaterColor1, WaterColor2, WaterColor3, YuanSu, Grid1, Maxresdefault, Abstract1
     
     static func allFilterTypes() -> [FilterType]{
-        return [Purple, StarryNight, Hue, Neon]
+        return [ StarryNight, Neon, YuanSu, WaterColor1, WaterColor2, WaterColor3, ColorClamp, MonoOrange, Purple, Grid1, Maxresdefault, Abstract1]
     }
 }
 
@@ -28,7 +28,7 @@ class Filter {
     private var imageToEdit: UIImage?
     private var outputCIImage: CIImage?
     private var aUIImageBackgroundNew: UIImage?
-    private let aUIImageBackground = UIImage(named: "starrynight")
+    private var aUIImageBackground = UIImage?()
     private var aCIImageBackground: CIImage?
     
     init(filterType: FilterType){
@@ -44,6 +44,28 @@ class Filter {
             filterCIEdges()
 //            filterBloom()
         case .StarryNight:
+            aUIImageBackground = UIImage(named: "starrynight")
+            filterDifferenceBlendMode()
+        case .WaterColor1:
+            aUIImageBackground = UIImage(named: "watercolor1")
+            filterDifferenceBlendMode()
+        case .WaterColor2:
+            aUIImageBackground = UIImage(named: "watercolor2")
+            filterDifferenceBlendMode()
+        case .WaterColor3:
+            aUIImageBackground = UIImage(named: "watercolor3")
+            filterDifferenceBlendMode()
+        case .Grid1:
+            aUIImageBackground = UIImage(named: "pyramidGrid")
+            filterDifferenceBlendMode()
+        case .YuanSu:
+            aUIImageBackground = UIImage(named: "yuansu")
+            filterDifferenceBlendMode()
+        case .Abstract1:
+            aUIImageBackground = UIImage(named: "abstract1")
+            filterDifferenceBlendMode()
+        case .Maxresdefault:
+            aUIImageBackground = UIImage(named: "maxresdefault")
             filterDifferenceBlendMode()
         case .Hue:
             filterHueAdjust()
@@ -51,6 +73,10 @@ class Filter {
             filterColorPolynomial()
         case .CrossPolynomial:
             filterCrossPolynomial()
+        case .ColorClamp:
+            filterColorClamp()
+        case .MonoOrange:
+            filterColorMonochrome()
         }
         outputUIImage = imageToEdit
         return outputUIImage
@@ -86,17 +112,35 @@ class Filter {
 //        produceImage()
 //    }
 //    
-//    @IBAction func TappedColorClamp(sender: AnyObject) {
-//        //        inputMinComponents Default value: [0 0 0 0] Identity: [0 0 0 0]
-//        //        inputMaxComponents Default value: [1 1 1 1] Identity: [1 1 1 1]
-//        
-//        specialEffect = CIFilter(name: "CIColorClamp")
-//        transformImage()
-//        specialEffect!.setValue(CIVector(x: 0.4, y: 0, z: 0.4, w: 0), forKey: "inputMinComponents")
-//        specialEffect!.setValue(CIVector(x: 0.8, y: 1, z: 0.8, w: 1), forKey: "inputMaxComponents")
-//        produceImage()
-//    }
-//    
+    private func filterColorClamp() {
+        //        inputMinComponents Default value: [0 0 0 0] Identity: [0 0 0 0]
+        //        inputMaxComponents Default value: [1 1 1 1] Identity: [1 1 1 1]
+        
+        specialEffect = CIFilter(name: "CIColorClamp")
+        aCIImageToEdit = CIImage(image: imageToEdit!)
+        specialEffect!.setValue(aCIImageToEdit, forKey: kCIInputImageKey)
+        specialEffect!.setValue(CIVector(x: 0.4, y: 0, z: 0.4, w: 0), forKey: "inputMinComponents")
+        specialEffect!.setValue(CIVector(x: 0.8, y: 1, z: 0.8, w: 1), forKey: "inputMaxComponents")
+        produceImage()
+    }
+    
+    
+    
+    
+    private func filterColorMonochrome() {
+        //    inputColor：
+        //    A CIColor object whose attribute type is CIAttributeTypeOpaqueColor and whose display name is Color.
+        //    inputIntensity：
+        //    Default value: 1.00
+        specialEffect = CIFilter(name: "CIColorMonochrome")
+        aCIImageToEdit = CIImage(image: imageToEdit!)
+        specialEffect!.setValue(aCIImageToEdit, forKey: kCIInputImageKey)
+        
+        specialEffect!.setValue(CIColor(color: UIColor.orangeColor()), forKey: kCIInputColorKey)
+        specialEffect!.setValue(1.0, forKey: kCIInputIntensityKey)
+        
+        produceImage()
+    }
     
    private func filterColorPolynomial() {
         specialEffect = CIFilter(name: "CIColorPolynomial")

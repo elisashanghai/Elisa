@@ -56,9 +56,9 @@ class PhotoViewController: UIViewController,UIScrollViewDelegate {
                 self.filteredPhoto = self.mySelectedFilter!.applyFilter(photoToEdit, filterType: self.mySelectedFilter!.filterType)}
             print("filteredPhoto size: \(self.filteredPhoto?.size.width)")
             self.isLoaded = true
-             dispatch_async(dispatch_get_main_queue()) {
+            
                 self.bigImageView.image = self.filteredPhoto
-            }
+            
             
         }
         
