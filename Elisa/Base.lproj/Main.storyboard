@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Editing View Controller-->
+        <!--Apply filter-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="EditingViewController" customModule="Elisa" customModuleProvider="target" sceneMemberID="viewController">
@@ -76,7 +76,7 @@
                             <constraint firstItem="PbM-vV-up7" firstAttribute="top" secondItem="olZ-OE-7iO" secondAttribute="bottom" id="yMl-dW-Hxd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="I5m-9u-3Dj"/>
+                    <navigationItem key="navigationItem" title="Apply filter" id="I5m-9u-3Dj"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="photoCollectionView" destination="PbM-vV-up7" id="2XC-iw-CcX"/>
@@ -141,15 +141,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-8Z-8LC">
-                                <rect key="frame" x="0.0" y="30" width="600" height="402"/>
-                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="fcc-5Q-rjL" appends="YES" id="di4-as-W0d"/>
-                                    <outletCollection property="gestureRecognizers" destination="fcc-5Q-rjL" appends="YES" id="FQu-qg-n2j"/>
-                                </connections>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8k-9u-pZy" userLabel="Camera Roll">
                                 <rect key="frame" x="30" y="452" width="128" height="128"/>
                                 <constraints>
@@ -172,6 +163,14 @@
                                     <action selector="buttonRatingTapped:" destination="k9Z-wr-a46" eventType="touchUpInside" id="TNK-nG-xQC"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-8Z-8LC">
+                                <rect key="frame" x="0.0" y="30" width="600" height="402"/>
+                                <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="fcc-5Q-rjL" appends="YES" id="di4-as-W0d"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.40000000600000002" green="1" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -210,39 +209,74 @@
             </objects>
             <point key="canvasLocation" x="2534" y="687"/>
         </scene>
-        <!--Upload Photo View Controller-->
-        <scene sceneID="xc0-DP-WSh">
+        <!--Select a panorama-->
+        <scene sceneID="a05-3s-LuQ">
             <objects>
-                <viewController id="XkM-ng-iVG" customClass="UploadPhotoViewController" customModule="Elisa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="hIg-nf-LAk" customClass="PhotoAlbum" customModule="Elisa" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eWf-4C-bKa"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZRm-aH-Pps"/>
+                        <viewControllerLayoutGuide type="top" id="xXC-3e-IMP"/>
+                        <viewControllerLayoutGuide type="bottom" id="2a7-Od-jPW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="0gA-eo-gYS">
+                    <view key="view" contentMode="scaleToFill" id="nJu-s3-lo5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="initial image" translatesAutoresizingMaskIntoConstraints="NO" id="JtL-gZ-710">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pWg-IC-umV">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                            </imageView>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EBX-Yc-OS4" customClass="AlbumCustomImageFlowLayout" customModule="Elisa" customModuleProvider="target">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="QXI-Zv-JI0" customClass="PhotoThumbnail" customModule="Elisa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W14-QH-pIn">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="W14-QH-pIn" firstAttribute="leading" secondItem="QXI-Zv-JI0" secondAttribute="leading" id="2cD-60-4IO"/>
+                                            <constraint firstAttribute="bottom" secondItem="W14-QH-pIn" secondAttribute="bottom" id="3z9-aO-YVZ"/>
+                                            <constraint firstItem="W14-QH-pIn" firstAttribute="top" secondItem="QXI-Zv-JI0" secondAttribute="top" id="DJr-iW-CL6"/>
+                                            <constraint firstAttribute="trailing" secondItem="W14-QH-pIn" secondAttribute="trailing" id="HM3-mU-eE1"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="W14-QH-pIn" id="VCE-ci-JjW"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="viewSinglePhoto" id="wWE-AI-f5r"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="hIg-nf-LAk" id="p8B-gq-O4T"/>
+                                    <outlet property="delegate" destination="hIg-nf-LAk" id="cSV-K1-noW"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JtL-gZ-710" firstAttribute="top" secondItem="eWf-4C-bKa" secondAttribute="bottom" id="1Wr-8F-6MK"/>
-                            <constraint firstAttribute="trailing" secondItem="JtL-gZ-710" secondAttribute="trailing" id="T21-YP-9jJ"/>
-                            <constraint firstItem="JtL-gZ-710" firstAttribute="leading" secondItem="0gA-eo-gYS" secondAttribute="leading" id="Ups-NV-6QQ"/>
-                            <constraint firstItem="ZRm-aH-Pps" firstAttribute="top" secondItem="JtL-gZ-710" secondAttribute="bottom" id="v8x-Rt-swz"/>
+                            <constraint firstItem="2a7-Od-jPW" firstAttribute="top" secondItem="pWg-IC-umV" secondAttribute="bottom" id="8Fd-5G-UqU"/>
+                            <constraint firstItem="pWg-IC-umV" firstAttribute="top" secondItem="xXC-3e-IMP" secondAttribute="bottom" id="Dru-yk-dNQ"/>
+                            <constraint firstAttribute="trailing" secondItem="pWg-IC-umV" secondAttribute="trailing" id="MxF-EL-fFY"/>
+                            <constraint firstItem="pWg-IC-umV" firstAttribute="leading" secondItem="nJu-s3-lo5" secondAttribute="leading" id="YSh-IB-x6Y"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Uqf-K8-NJi"/>
+                    <navigationItem key="navigationItem" title="Select a panorama" id="0Cb-n1-ARY"/>
                     <connections>
-                        <outlet property="uploadImageView" destination="JtL-gZ-710" id="j9R-GX-LEm"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="uploadToEditingSegue" animates="NO" id="jJu-Ri-Bai"/>
+                        <outlet property="panoramaCollectionView" destination="pWg-IC-umV" id="W1O-ZJ-psv"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N1J-BU-LIe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LyJ-ZD-jGK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1079" y="712"/>
+            <point key="canvasLocation" x="1046" y="709"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qYJ-26-4SG">
@@ -255,16 +289,15 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="XkM-ng-iVG" kind="relationship" relationship="rootViewController" id="DJo-ue-Pwf"/>
+                        <segue destination="hIg-nf-LAk" kind="relationship" relationship="rootViewController" id="6Lo-9E-13P"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmN-8q-k5w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="712"/>
+            <point key="canvasLocation" x="243" y="687"/>
         </scene>
     </scenes>
     <resources>
-        <image name="initial image" width="1499" height="707"/>
         <image name="ios_photos" width="128" height="128"/>
         <image name="like" width="128" height="128"/>
     </resources>

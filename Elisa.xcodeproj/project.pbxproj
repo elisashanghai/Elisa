@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		61032FAF1D53D96500B8CBF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61032FAE1D53D96500B8CBF1 /* Assets.xcassets */; };
-		61032FB11D53DE2D00B8CBF1 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61032FB01D53DE2D00B8CBF1 /* UploadPhotoViewController.swift */; };
 		614D59531D530BEA004F26DF /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59521D530BEA004F26DF /* Filter.swift */; };
 		614D59561D53176B004F26DF /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59551D53176B004F26DF /* Filters.swift */; };
 		614D59581D5341B3004F26DF /* CustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614D59571D5341B3004F26DF /* CustomImageFlowLayout.swift */; };
@@ -22,6 +21,9 @@
 		61AA5F111D52768300B3536C /* ElisaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F101D52768300B3536C /* ElisaUITests.swift */; };
 		61AA5F221D529A4400B3536C /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F211D529A4400B3536C /* PhotoViewController.swift */; };
 		61AA5F251D52A32500B3536C /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61AA5F241D52A32500B3536C /* SharingViewController.swift */; };
+		61B4164F1D68151800CAFE00 /* PhotoAlbum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B4164E1D68151800CAFE00 /* PhotoAlbum.swift */; };
+		61B416531D68167900CAFE00 /* AlbumCustomImageFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B416521D68167900CAFE00 /* AlbumCustomImageFlowLayout.swift */; };
+		61B416551D68172C00CAFE00 /* PhotoThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B416541D68172C00CAFE00 /* PhotoThumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +45,6 @@
 
 /* Begin PBXFileReference section */
 		61032FAE1D53D96500B8CBF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		61032FB01D53DE2D00B8CBF1 /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		614D59521D530BEA004F26DF /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		614D59551D53176B004F26DF /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		614D59571D5341B3004F26DF /* CustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomImageFlowLayout.swift; sourceTree = "<group>"; };
@@ -63,6 +64,9 @@
 		61AA5F121D52768300B3536C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61AA5F211D529A4400B3536C /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		61AA5F241D52A32500B3536C /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
+		61B4164E1D68151800CAFE00 /* PhotoAlbum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoAlbum.swift; sourceTree = "<group>"; };
+		61B416521D68167900CAFE00 /* AlbumCustomImageFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCustomImageFlowLayout.swift; sourceTree = "<group>"; };
+		61B416541D68172C00CAFE00 /* PhotoThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoThumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +170,8 @@
 			children = (
 				614D59571D5341B3004F26DF /* CustomImageFlowLayout.swift */,
 				614D59591D53438B004F26DF /* FilterCollectionViewCell.swift */,
+				61B416521D68167900CAFE00 /* AlbumCustomImageFlowLayout.swift */,
+				61B416541D68172C00CAFE00 /* PhotoThumbnail.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -173,10 +179,10 @@
 		61AA5F231D529A5100B3536C /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				61032FB01D53DE2D00B8CBF1 /* UploadPhotoViewController.swift */,
 				61AA5EEF1D52768200B3536C /* EditingViewController.swift */,
 				61AA5F241D52A32500B3536C /* SharingViewController.swift */,
 				61AA5F211D529A4400B3536C /* PhotoViewController.swift */,
+				61B4164E1D68151800CAFE00 /* PhotoAlbum.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -315,11 +321,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61B416531D68167900CAFE00 /* AlbumCustomImageFlowLayout.swift in Sources */,
 				614D59561D53176B004F26DF /* Filters.swift in Sources */,
+				61B4164F1D68151800CAFE00 /* PhotoAlbum.swift in Sources */,
 				614D595A1D53438B004F26DF /* FilterCollectionViewCell.swift in Sources */,
 				61AA5F221D529A4400B3536C /* PhotoViewController.swift in Sources */,
 				614D59581D5341B3004F26DF /* CustomImageFlowLayout.swift in Sources */,
-				61032FB11D53DE2D00B8CBF1 /* UploadPhotoViewController.swift in Sources */,
+				61B416551D68172C00CAFE00 /* PhotoThumbnail.swift in Sources */,
 				61AA5EF01D52768200B3536C /* EditingViewController.swift in Sources */,
 				614D59531D530BEA004F26DF /* Filter.swift in Sources */,
 				61AA5EEE1D52768200B3536C /* AppDelegate.swift in Sources */,

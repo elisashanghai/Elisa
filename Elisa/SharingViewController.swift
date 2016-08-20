@@ -20,6 +20,7 @@ class SharingViewController: UIViewController {
     var myImageSource: CGImageSource?
     var asset: PHAsset?
     var filteredPreview: UIImage?
+    var didShared: Bool = false
 
     
 
@@ -54,83 +55,36 @@ class SharingViewController: UIViewController {
     
     @IBAction func buttonRatingTapped(sender: AnyObject) {
         ratingButton.setImage(UIImage(named: "like-finished"), forState: UIControlState.Normal)
+        if let url = NSURL(string: "https://www.facebook.com/filter360") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+        
     }
-
     
     
     @IBAction func buttonCameraRollTapped(sender: AnyObject) {
+        if didShared == false {
+
+            
+            self.photoToEdit = self.getAssetFullImage(self.asset!)
+            
+            if self.mySelectedFilter == nil {
+                self.filteredPhoto = self.photoToEdit
+            }
+            else {
+                self.filteredPhoto = self.mySelectedFilter!.applyFilter(self.photoToEdit!, filterType: self.mySelectedFilter!.filterType)}
+            print("filteredPhoto size: \(self.filteredPhoto?.size.width)")
         camerarollButton.setImage(UIImage(named: "ios_photos-finished"), forState: UIControlState.Normal)
-        
-        
-        
-        
-        
+            
 //        ALAssetsLibrary methods (work)
         let library: ALAssetsLibrary = ALAssetsLibrary()
         library.writeImageToSavedPhotosAlbum(filteredPhoto?.CGImage, metadata: dict, completionBlock: nil)
-        print(dict)
-       
-        
-        
-        /* ImageIO methods(not working)
-        
-        let UTI = CGImageSourceGetType(myImageSource!)! as CFStringRef
-        let imageData: NSMutableData = NSMutableData()
-        let destination: CGImageDestination? = CGImageDestinationCreateWithData(imageData, UTI, 1, nil)
-        if destination == nil{
-            NSLog("***Could not create image destination ***")
-        }
-        
-        CGImageDestinationAddImageFromSource(destination!, myImageSource!, 0, dict)
-        
-        var success: Bool = false
-        success = CGImageDestinationFinalize(destination!)
-        
-        if success == false {
-        NSLog("***Could not create data from image destination ***")
-        }else{
-        print("Final properties \(dict)")
-        }
- 
- */
-//    frameReadyToSave(filteredPhoto!, withExifAttachments: dict!)
-        
-//        print(dict)
-        
-        
-        
-//        UIImageWriteToSavedPhotosAlbum(filteredPhoto!, nil, nil, nil)
+            print(dict)}
+        didShared = true
+
     }
     
-    /*
-    PHFetchResult *savedAssets = [PHAsset fetchAssetsWithLocalIdentifiers:[NSArray arrayWithObjects:myAssetURL, nil] options:nil];
-    [savedAssets enumerateObjectsUsingBlock:^(PHAsset *asset, NSUInteger idx, BOOL *stop) {
-    PHImageRequestOptions *cropToSquare = [[PHImageRequestOptions alloc] init];
-    cropToSquare.synchronous = YES;
-    [[PHImageManager defaultManager] requestImageDataForAsset:asset
-    options:cropToSquare
-    resultHandler:
-    ^(NSData *imageData, NSString *dataUTI, UIImageOrientation orientation, NSDictionary *info) {
-    CIImage* ciImage = [CIImage imageWithData:imageData];
-    NSMutableDictionary *metadataAsMutable = [ciImage.properties mutableCopy];
-    CGImageSourceRef source = Nil;
-    NSDictionary* sourceOptionsDict = [NSDictionary dictionaryWithObjectsAndKeys:dataUTI ,kCGImageSourceTypeIdentifierHint,nil];
-    source = CGImageSourceCreateWithData((__bridge CFDataRef) imageData,  (__bridge CFDictionaryRef) sourceOptionsDict);
-    CFStringRef UTI = CGImageSourceGetType(source);
-    NSMutableData *dest_data = [NSMutableData data];
-    CGImageDestinationRef destination = CGImageDestinationCreateWithData((__bridge CFMutableDataRef)dest_data,UTI,1,NULL);
-    CGImageDestinationAddImageFromSource(destination,source,0, (__bridge CFDictionaryRef) metadataAsMutable);
-    BOOL success = NO;
-    success = CGImageDestinationFinalize(destination);
-    
-    if(!success) {
-    }
-    [dest_data writeToFile:myTrumbImageFileName atomically:YES];
-    CFRelease(destination);
-    CFRelease(source);
-    }];
-    }];
-    */
+
     
     
     func getAssetFullImage(asset: PHAsset) -> UIImage {
@@ -180,20 +134,6 @@ class SharingViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(filteredPhotoTapped))
         filteredPhotoImageView.userInteractionEnabled = true
         filteredPhotoImageView.addGestureRecognizer(tapGestureRecognizer)
-        
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-            
-            self.photoToEdit = self.getAssetFullImage(self.asset!)
-            
-            if self.mySelectedFilter == nil {
-                self.filteredPhoto = self.photoToEdit
-            }
-            else {
-                self.filteredPhoto = self.mySelectedFilter!.applyFilter(self.photoToEdit!, filterType: self.mySelectedFilter!.filterType)}
-            print("filteredPhoto size: \(self.filteredPhoto?.size.width)")
-            
-        }
 
     }
 
@@ -222,16 +162,5 @@ class SharingViewController: UIViewController {
         
     }
 
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

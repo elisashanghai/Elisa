@@ -119,7 +119,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
         if (indexPath.row + 1) % 3 == 0 {
             filterImage = myFilters.filters[indexPath.row].applyFilter(rightPreview!, filterType: myFilters.filters[indexPath.row].filterType)
         }
-        else if (indexPath.row + 1) % 2 == 0 {
+        else if (indexPath.row + 2) % 3 == 0 {
             filterImage = myFilters.filters[indexPath.row].applyFilter(middlePreview!, filterType: myFilters.filters[indexPath.row].filterType)
         }
         else {
@@ -144,7 +144,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
             toSharing.dict = dict
             toSharing.mySelectedFilter = mySelectedFilter
             toSharing.asset = asset
-            toSharing.filteredPreview = filteredPreview
+            toSharing.filteredPreview = self.photoPreviewImageView.image
         }
     }
 
@@ -152,22 +152,7 @@ class EditingViewController: UIViewController,  UICollectionViewDataSource, UICo
 }
 
 extension UIImage {
-//    var topHalf: UIImage? {
-//        guard let image = CGImageCreateWithImageInRect(CGImage,
-//                                                       CGRect(origin: CGPoint(x: 0, y: 0),
-//                                                        size: CGSize(width: size.width, height: size.height/2)))
-//            else { return nil }
-//        return UIImage(CGImage: image, scale: 1, orientation: imageOrientation)
-//    }
-//    
-//    var bottomHalf: UIImage? {
-//        guard let image = CGImageCreateWithImageInRect(CGImage,
-//                                                       CGRect(origin: CGPoint(x: 0,  y: CGFloat(Int(size.height)-Int(size.height/2))),
-//                                                        size: CGSize(width: size.width, height: CGFloat(Int(size.height) - Int(size.height/2)))))
-//            else { return nil }
-//        return UIImage(CGImage:
-//            image, scale: 1, orientation: imageOrientation)
-//    }
+
     var leftPart: UIImage? {
         guard let image = CGImageCreateWithImageInRect(CGImage,
                                                        CGRect(origin: CGPoint(x: 0, y: 0),
